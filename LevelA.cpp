@@ -252,6 +252,11 @@ void LevelA::update(float delta_time)
         }
     }
 
+    std::cout << m_state.player->get_position().x;
+    std::cout << "\n";
+    std::cout << m_state.player->get_position().y;
+    std::cout << "\n";
+
     // players both reached door
     if (m_state.player->get_position().y == -2.1f && (m_state.player->get_position().x > 15.5f && m_state.player->get_position().x < 16.1f) &&
         m_state.player2->get_position().y == -2.1f && (m_state.player2->get_position().x > 15.5f && m_state.player2->get_position().x < 16.1f)) m_state.finished = true;
@@ -266,4 +271,19 @@ void LevelA::render(ShaderProgram *program)
     for (int i = 0; i < BUTTON_COUNT; i++) { m_state.buttons[i].render(program); }
     m_state.player->render(program);
     m_state.player2->render(program);
+
+    // tutorial
+    GLuint font_texture_id_1 = Utility::load_texture("assets/fonts/font1.png");
+    if(m_state.player->get_position() == glm::vec3(1.0, -9.1, 0.0)) {
+        Utility::draw_text(program, font_texture_id_1, "Move watergirl", 0.3f, -0.2f, glm::vec3(2.0, -8.7, 0.0));
+        Utility::draw_text(program, font_texture_id_1, "with A, W, D", 0.3f, -0.2f, glm::vec3(2.0, -9.2, 0.0));
+    }
+    if (m_state.player2->get_position() == glm::vec3(1.0, -7.1, 0.0)) {
+        Utility::draw_text(program, font_texture_id_1, "Move fireboy", 0.3f, -0.2f, glm::vec3(2.0, -6.7, 0.0));
+        Utility::draw_text(program, font_texture_id_1, "with <, ^, >", 0.3f, -0.2f, glm::vec3(2.0, -7.2, 0.0));
+    }
+    if ((m_state.player->get_position().y == -9.1 && m_state.player->get_position().x > 3 && m_state.player->get_position().x < 4)) {
+        Utility::draw_text(program, font_texture_id_1, "Do not mix", 0.3f, -0.2f, glm::vec3(8.0, -8.7, 0.0));
+        Utility::draw_text(program, font_texture_id_1, "opposite elements!", 0.3f, -0.2f, glm::vec3(8.0, -9.2, 0.0));
+    }
 }
