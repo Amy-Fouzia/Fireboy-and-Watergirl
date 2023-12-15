@@ -9,7 +9,7 @@ unsigned int LEVELC_DATA[] = {
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
     3, 0, 0, 1, 1, 1, 1, 3, 3, 0, 0, 0, 3, 2, 2, 2, 2, 0, 0, 3,
     3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3,
-    3, 3, 3, 3, 3, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 3, 3, 3, 3, 3,
+    3, 3, 3, 3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 3, 3, 3, 3,
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
     3, 3, 3, 2, 2, 3, 3, 3, 0, 0, 0, 3, 3, 3, 3, 1, 1, 3, 3, 3,
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
@@ -147,15 +147,6 @@ void LevelC::initialise()
 
 void LevelC::update(float delta_time)
 {
-    std::cout << "\n p1x: ";
-    std::cout << m_state.player->get_position().x;
-    std::cout << " p1y: ";
-    std::cout << m_state.player->get_position().y;
-    std::cout << "\n p2x: ";
-    std::cout << m_state.player2->get_position().x;
-    std::cout << " p2y: ";
-    std::cout << m_state.player2->get_position().y;
-
     m_state.background->update(delta_time, m_state.player, m_state.player, 1, m_state.map);
     m_state.door->update(delta_time, m_state.player, m_state.player, 1, m_state.map);
     for (int i = 0; i < ENEMY_COUNT; i++) { m_state.enemies[i].update(delta_time, m_state.door, m_state.door, 1, m_state.map); }
@@ -184,16 +175,16 @@ void LevelC::update(float delta_time)
         (m_state.player2->get_position().y == -5.1f && (m_state.player2->get_position().x > 1.8f && m_state.player2->get_position().x < 2.2f))
         ) {
         m_state.enemies[1].move_up();
-        std::cout << "\n up";
+        //std::cout << "\n up";
 
     }
     else if (m_state.enemies[1].get_position().y > -2.0) {
         m_state.enemies[1].move_down();
-        std::cout << "\n down";
+        //std::cout << "\n down";
     }
     else {
         m_state.enemies[1].set_position(glm::vec3(18.0, -4.0, 0.0));
-        std::cout << "\n reset";
+        //std::cout << "\n reset";
     }
 
     if ((m_state.player->get_position().y == -1.1f && (m_state.player->get_position().x > 11.8f && m_state.player->get_position().x < 12.2f)) ||

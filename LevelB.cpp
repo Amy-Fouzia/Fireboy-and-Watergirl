@@ -178,11 +178,6 @@ void LevelB::update(float delta_time)
         m_state.fell = true;
     }
 
-    std::cout << "\n p2x: ";
-    std::cout << m_state.player2->get_position().x;
-    std::cout << " p2y: ";
-    std::cout << m_state.player2->get_position().y;
-
     // squashed  by ceiling
     if (m_state.player->get_position().y == -0.1 ||
         (m_state.player->get_position().y == -6.1 && m_state.player->get_position().x > 10.5 && m_state.player->get_position().x < 15.5)) {

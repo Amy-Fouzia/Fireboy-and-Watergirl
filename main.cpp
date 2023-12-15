@@ -287,7 +287,7 @@ void update()
     //switch levels
     if (g_current_scene == g_levelA && g_current_scene->m_state.finished) switch_to_scene(g_levelB);
 
-    if (g_current_scene == g_levelB && g_current_scene->m_state.finished) switch_to_scene(g_levelC);
+    if (g_current_scene == g_levelB && g_current_scene->m_state.finished) switch_to_scene(g_levels[3]); ;
 
     // won game
     if (g_current_scene == g_levelC && g_current_scene->m_state.finished) {
@@ -339,12 +339,12 @@ void render()
 
     // won game
     if (g_current_scene == g_levelC && g_current_scene->m_state.finished) {
-        Utility::draw_text(&g_shader_program, font_texture_id_1, "you win!!!", 0.5f, -0.25f, glm::vec3(12.0f, -4.0f, 0.0f));
+        Utility::draw_text(&g_shader_program, font_texture_id_1, "you win!!!", 0.5f, -0.25f, glm::vec3(9.0f, -4.0f, 0.0f));
     }
 
     // lost game
     if (lives == 0) {
-        Utility::draw_text(&g_shader_program, font_texture_id_1, "you lose :(", 0.5f, -0.25f, glm::vec3(g_current_scene->m_state.player->get_position().x, -4.0f, 0.0f));
+        Utility::draw_text(&g_shader_program, font_texture_id_1, "you lose :(", 0.5f, -0.25f, glm::vec3(0.5f * (g_current_scene->m_state.player->get_position().x + g_current_scene->m_state.player2->get_position().x), -4.0f, 0.0f));
     }
 
     SDL_GL_SwapWindow(g_display_window);
