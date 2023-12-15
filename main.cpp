@@ -168,7 +168,7 @@ void process_input()
             case SDLK_s:
                 // Start the game with a keystroke
                 start = true;
-                switch_to_scene(g_levels[3]); 
+                switch_to_scene(g_levels[1]); 
                 break;
 
             case SDLK_w:

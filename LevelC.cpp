@@ -9,7 +9,7 @@ unsigned int LEVELC_DATA[] = {
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
     3, 0, 0, 1, 1, 1, 1, 3, 3, 0, 0, 0, 3, 2, 2, 2, 2, 0, 0, 3,
     3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3,
-    3, 0, 0, 3, 3, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 3, 3, 0, 0, 3,
+    3, 3, 3, 3, 3, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 3, 3, 3, 3, 3,
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
     3, 3, 3, 2, 2, 3, 3, 3, 0, 0, 0, 3, 3, 3, 3, 1, 1, 3, 3, 3,
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
@@ -54,9 +54,6 @@ void LevelC::initialise()
         m_state.enemies[i].set_movement(glm::vec3(0.0f, 0.0f, 0.0f));
         m_state.enemies[i].set_speed(1.0f);
     }
-
-    m_state.enemies[0].set_position(glm::vec3(1.5f, -4.0f, 0.0f));
-    m_state.enemies[1].set_position(glm::vec3(17.5f, -4.0f, 0.0f));
 
     for (int i = PLATFORM_COUNT; i < ENEMY_COUNT; i++) {
         m_state.enemies[i].set_entity_type(ENEMY);
@@ -272,7 +269,7 @@ void LevelC::render(ShaderProgram* program)
     m_state.map->render(program);
     m_state.door->render(program);
     for (int i = 0; i < ENEMY_COUNT; i++) { m_state.enemies[i].render(program); }
-    for (int i = 0; i < BUTTON_COUNT; i++) { m_state.buttons[i].render(program); }
+    //for (int i = 0; i < BUTTON_COUNT; i++) { m_state.buttons[i].render(program); }
     m_state.player->render(program);
     m_state.player2->render(program);
 }
